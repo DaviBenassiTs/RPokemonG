@@ -1,0 +1,6 @@
+@RPokemonG_HostAddress = http://localhost:5087
+
+GET {{RPokemonG_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
