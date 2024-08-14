@@ -26,7 +26,7 @@ namespace RPokemonG.Services
             await _fichaCollection.ReplaceOneAsync(x => x.Id == id, ficha);
         public async Task RemoveAsync(string id) => 
             await _fichaCollection.DeleteOneAsync(x => x.Id == id);
-        //criando os metodos 
+        //criando os metodos api
 
     }
 }
