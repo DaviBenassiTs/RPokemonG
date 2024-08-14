@@ -10,7 +10,7 @@ namespace RPokemonG.Services
 
         public FichaServices(IOptions<DatabaseSettings> fichaService)//Configura database
         {
-            var mongoClient = new MongoClient(fichaService.Value.ConnectionString);
+            var mongoClient = new MongoClient(fichaService.Value.ConnectionString);//puxando o banco do appsettings
             var mongoDatabase = mongoClient.GetDatabase(fichaService.Value.DatabaseName);
 
             _fichaCollection = mongoDatabase.GetCollection<Ficha>(fichaService.Value.FichaCollectionName);
