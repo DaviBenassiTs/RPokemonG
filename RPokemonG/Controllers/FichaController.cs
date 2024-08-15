@@ -29,7 +29,7 @@ namespace RPokemonG.Controllers
         }
 
 
-        [HttpPut("{id:length(24)}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, Ficha updateFicha)
         {
             var ficha = await _fichaServices.GetFicha(id);
@@ -46,7 +46,7 @@ namespace RPokemonG.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id:length(24)}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             var book = await _fichaServices.GetFicha(id);

@@ -4,7 +4,7 @@ using RPokemonG.Models;
 
 namespace RPokemonG.Services
 {
-    public class DatabaseSetting
+    public class FichaServices
     {
         private readonly IMongoCollection<Ficha> _fichaCollection;//somente leitura - puxa a tabela e crio o nome
 
@@ -13,7 +13,7 @@ namespace RPokemonG.Services
             var mongoClient = new MongoClient(fichaService.Value.ConnectionString);//puxando o banco do appsettings
             var mongoDatabase = mongoClient.GetDatabase(fichaService.Value.DatabaseName);
 
-            _fichaCollection = mongoDatabase.GetCollection<Ficha>(databaseService.Value.FichaCollectionName);
+            _fichaCollection = mongoDatabase.GetCollection<Ficha>(fichaService.Value.FichaCollectionName);
         }
 
         public async Task<List<Ficha>> GetFicha() =>
