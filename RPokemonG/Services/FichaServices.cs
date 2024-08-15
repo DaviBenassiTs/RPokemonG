@@ -16,15 +16,15 @@ namespace RPokemonG.Services
             _fichaCollection = mongoDatabase.GetCollection<Ficha>(fichaService.Value.FichaCollectionName);
         }
 
-        public async Task<List<Ficha>> GetAsync() =>
+        public async Task<List<Ficha>> GetFicha() =>
             await _fichaCollection.Find(x => true).ToListAsync();
-        public async Task<Ficha> GetAsync(string id) =>
+        public async Task<Ficha> GetFicha(string id) =>
             await _fichaCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-        public async Task CreateAsync (Ficha ficha) =>
+        public async Task CreateFicha (Ficha ficha) =>
             await _fichaCollection.InsertOneAsync(ficha);
-        public async Task UpdateAsync (string id, Ficha ficha) =>
+        public async Task UpdateFicha (string id, Ficha ficha) =>
             await _fichaCollection.ReplaceOneAsync(x => x.Id == id, ficha);
-        public async Task RemoveAsync(string id) => 
+        public async Task RemoveFicha(string id) => 
             await _fichaCollection.DeleteOneAsync(x => x.Id == id);
         //criando os metodos api
 
