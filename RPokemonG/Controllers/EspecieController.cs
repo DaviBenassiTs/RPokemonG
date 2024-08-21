@@ -15,6 +15,9 @@ namespace RPokemonG.Controllers
         {
             _especieServices = especieService;
         }
+        [HttpGet]
+        public async Task<List<Especie>> GetEspecie()
+    => await _especieServices.GetEspecie();
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Especie>> GetEspecie(string id)

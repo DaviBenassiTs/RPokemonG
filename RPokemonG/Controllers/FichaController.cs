@@ -16,6 +16,18 @@ namespace RPokemonG.Controllers
             _fichaServices = fichaService;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Ficha>> GetFicha(string id)
+        {
+            var ficha = await _fichaServices.GetFicha(id);
+
+            if (ficha is null)
+            {
+                return NotFound();
+            }
+
+            return ficha;
+        }
         [HttpGet]
         public async Task<List<Ficha>> GetFichas()
             => await _fichaServices.GetFicha();

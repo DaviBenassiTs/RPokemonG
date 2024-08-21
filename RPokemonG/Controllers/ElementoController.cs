@@ -15,6 +15,18 @@ namespace RPokemonG.Controllers
         {
             _elementoServices = elementoService;
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Elemento>> GetElemento(string id)
+        {
+            var elemento = await _elementoServices.GetElemento(id);
+
+            if (elemento is null)
+            {
+                return NotFound();
+            }
+
+            return elemento;
+        }
 
         [HttpGet]
         public async Task<List<Elemento>> GetElemento()
