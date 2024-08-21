@@ -67,7 +67,7 @@ namespace RPokemonG.Controllers
 
             await _especieServices.RemoveEspecie(id);
 
-            return NoContent();
+            return NoContent();//
         }
     }
 }
