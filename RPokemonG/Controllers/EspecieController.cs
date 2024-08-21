@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RPokemonG.Models;
 using RPokemonG.Services;
+using System.Net.Mime;
 
 namespace RPokemonG.Controllers
 {
@@ -20,20 +21,15 @@ namespace RPokemonG.Controllers
     => await _especieServices.GetEspecie();
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Especie>> GetEspecie(string id)
+        [ProducesResponseType<Especie>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetById_IActionResult(int id)
         {
-            var especie = await _especieServices.GetEspecie(id);
-
-            if (especie is null)
-            {
-                return NotFound();
-            }
-
-            return especie;
+            var product = _especieServices.GetEspecie();
+            return product == null ? NotFound() : Ok(product);
         }
 
-
-        [HttpPost]
+        [HttpPost()]
         public async Task<Especie> PostEspecie(Especie especie)
         {
             await _especieServices.CreateEspecie(especie);
