@@ -8,5 +8,5 @@
         public string ElementoCollectionName { get; set; } = null;
         public string EspecieCollectionName { get; set; } = null;
 
-    }
+    }//passado no app settings
 }

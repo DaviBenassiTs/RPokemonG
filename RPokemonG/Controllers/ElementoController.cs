@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using RPokemonG.Models;
 using RPokemonG.Services;
+using RPokemonG.SignalHub;
 
 namespace RPokemonG.Controllers
 {
@@ -16,8 +18,9 @@ namespace RPokemonG.Controllers
             _elementoServices = elementoService;
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Elemento>> GetElemento(string id)
+        public async Task<ActionResult<Elemento>> GetElemento(string id, [FromServices] IHubContext<ChatHub> hub)
         {
+            hub.Clients.All.SendAsync("messageReceived", new {user = "user1", message = "mengao"});
             var elemento = await _elementoServices.GetElemento(id);
 
             if (elemento is null)
