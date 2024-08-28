@@ -1,19 +1,11 @@
-using RPokemonG.Models;
-using RPokemonG.Services;
 using RPokemonG.SignalHub;
+using RPokemonG.Builders;
 
 var builder = WebApplication.CreateBuilder(args);//puxa todos os builders de WebApplication
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
-
-// Add services to the container.
-builder.Services.Configure<DatabaseSettings>
-    (builder.Configuration.GetSection("DatabaseSettings"));//define a configuração que deve ser usada no appsettings
-
-builder.Services.AddSingleton<FichaServices>();
-builder.Services.AddSingleton<EspecieServices>();
-builder.Services.AddSingleton<ElementoServices>();
+builder.DBContext();//encapsulado em builders
 builder.Services.AddSignalR();
 builder.Services.AddCors();//recebe parametro options
 
@@ -31,14 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(
-    builder =>
-    {
-            builder.SetIsOriginAllowed(origin => true);
-            builder.AllowCredentials();
-            builder.AllowAnyHeader();
-            builder.AllowAnyMethod();
-    });
+app.UseCorsApp();//encapsulado em builders
 
 app.MapHub<ChatHub>("/hub");
 
