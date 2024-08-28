@@ -2,7 +2,7 @@ using RPokemonG.Models;
 using RPokemonG.Services;
 using RPokemonG.SignalHub;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);//puxa todos os builders de WebApplication
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
