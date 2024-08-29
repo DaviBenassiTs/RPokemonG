@@ -1,10 +1,11 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace RPokemonG.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -14,6 +15,7 @@ namespace RPokemonG.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; private set; }
         [DataType(DataType.Password)]
-        public string Senha { get; private set; } 
+        public string Senha { get; private set; }
+        public bool IsAdmin { get; set; }
     }
 }
