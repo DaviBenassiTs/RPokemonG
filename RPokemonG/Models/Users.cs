@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace RPokemonG.Models
 {
-    public class User : IdentityUser
+    public class Users : IdentityUser
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -14,7 +14,7 @@ namespace RPokemonG.Models
         public string Nome { get; private set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; private set; }
-        [DataType(DataType.Password)]
+        [BsonElement("PasswordHash")]
         public string Senha { get; private set; }
         public bool IsAdmin { get; set; }
     }
