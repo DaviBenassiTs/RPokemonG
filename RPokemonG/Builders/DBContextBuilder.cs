@@ -14,7 +14,7 @@ namespace RPokemonG.Builders
             builder.Services.AddSingleton<FichaServices>();
             builder.Services.AddSingleton<EspecieServices>();
             builder.Services.AddSingleton<ElementoServices>();
-            builder.Services.AddSingleton<UserService>();
+            builder.Services.AddSingleton<UserServices>();
 
         }
     }

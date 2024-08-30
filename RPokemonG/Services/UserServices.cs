@@ -4,15 +4,15 @@ using Microsoft.Extensions.Options;
 
 namespace RPokemonG.Services
 {
-    public class UserService
+    public class UserServices
     {
         private readonly IMongoCollection<Users> _users;
 
-        public UserService(IOptions<DatabaseSettings> mongoDBSettings)
+        public UserServices(IOptions<DatabaseSettings> mongoDBSettings)
         {
             var client = new MongoClient(mongoDBSettings.Value.ConnectionString);
             var database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
-            _users = database.GetCollection<Users>(mongoDBSettings.Value.UserCollectionName);
+            _users = database.GetCollection<Users>(mongoDBSettings.Value.UsersCollectionName);
         }
 
         public Users GetByName(string username) =>

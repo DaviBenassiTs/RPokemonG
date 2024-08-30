@@ -12,10 +12,10 @@ namespace RPokemonG.Controllers
     public class UserController : ControllerBase
     {
         // Serviço que lida com a lógica de usuários
-        private readonly UserService _userService;
+        private readonly UserServices _userService;
 
         // Construtor que inicializa o controlador com uma instância do UserService
-        public UserController(UserService userService)
+        public UserController(UserServices userService)
         {
             _userService = userService;
         }

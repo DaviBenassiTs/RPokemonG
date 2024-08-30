@@ -7,7 +7,7 @@
         public string FichaCollectionName { get; set; } = null;
         public string ElementoCollectionName { get; set; } = null;
         public string EspecieCollectionName { get; set; } = null;
-        public string UserCollectionName { get; set; } = null;
+        public string UsersCollectionName { get; set; } = null;
 
     }//passado no app settings
 }
