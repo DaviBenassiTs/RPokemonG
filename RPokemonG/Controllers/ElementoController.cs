@@ -64,9 +64,9 @@ namespace RPokemonG.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var book = await _elementoServices.GetElemento(id);
+            var elemento = await _elementoServices.GetElemento(id);
 
-            if (book is null)
+            if (elemento is null)
             {
                 return NotFound();
             }

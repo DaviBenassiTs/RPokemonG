@@ -58,9 +58,9 @@ namespace RPokemonG.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var book = await _especieServices.GetEspecie(id);
+            var especie = await _especieServices.GetEspecie(id);
 
-            if (book is null)
+            if (especie is null)
             {
                 return NotFound();
             }
