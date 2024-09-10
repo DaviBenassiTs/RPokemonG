@@ -5,7 +5,7 @@ namespace RTestG
         [Fact]
         public void Test1()
         {
-
+            var test = new UnitTest1();
         }
     }
 }
